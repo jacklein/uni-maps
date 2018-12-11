@@ -12,7 +12,13 @@ import SettingsScreen from './screens/SettingsScreen';
 const AppNavigator = createSwitchNavigator({
   welcome: WelcomeScreen,
   main: createBottomTabNavigator({
-    home: HomeScreen,
+    home: {
+      screen: createStackNavigator({
+        home: HomeScreen,
+        category: CategoryScreen,
+        map: MapScreen
+      })
+    },
     favorites: FavoritesScreen,
     settings: SettingsScreen
   })
