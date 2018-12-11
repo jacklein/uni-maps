@@ -19,7 +19,12 @@ const AppNavigator = createSwitchNavigator({
         map: MapScreen
       })
     },
-    favorites: FavoritesScreen,
+    favorites: {
+      screen: createStackNavigator({
+        favorites: FavoritesScreen,
+        map: MapScreen 
+      })
+    },
     settings: SettingsScreen
   })
 })

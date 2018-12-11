@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Platform, ScrollView } from 'react-native';
-import { Button, List, ListItem } from 'react-native-elements';
+import { Button, List, ListItem, SearchBar } from 'react-native-elements';
 
 class CategoryScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -23,17 +23,20 @@ class CategoryScreen extends Component {
     }
   }
 
+  onItemPress = place => {
+    this.props.navigation.navigate({
+      routeName: 'map',
+      params: { title: place.name } 
+    })
+  }
+
   renderPlaces() {
     return this.props.navigation.state.params.places.map(place => {
       return (
         <ListItem
           title={place.name}
           key={place.name}
-          onPress={() => this.props.navigation.navigate({
-            routeName: 'map',
-            params: { title: place.name } 
-          })
-          }
+          onPress={() => this.onItemPress(place)}
         />
       )
     })
@@ -41,11 +44,17 @@ class CategoryScreen extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <List>
-          {this.renderPlaces()}
-        </List>
-      </ScrollView>
+      <View style={{ flex: 1 }}>
+        <SearchBar
+          lightTheme  
+          placeholder='Search places...'
+        />
+        <ScrollView>
+          <List>
+            {this.renderPlaces()}
+          </List>
+        </ScrollView>
+      </View>
     )
   }
 }
