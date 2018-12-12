@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, Platform, ScrollView } from 'react-native';
 import { Button, List, ListItem } from 'react-native-elements';
+import ViewAll from '../components/ViewAll';
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -31,7 +32,14 @@ class HomeScreen extends Component {
     });
   }
 
-  onItemPress = category => {
+  onViewAllPress = (title, places) => {
+    this.props.navigation.navigate({
+      routeName: 'category',
+      params: { title, places }
+    })
+  }
+
+  onCategoryPress = category => {
     this.props.navigation.navigate({
       routeName: 'category',
       params: { title: category.longName, places: category.places } 
@@ -44,7 +52,7 @@ class HomeScreen extends Component {
         <ListItem
           title={category.longName}
           key={category.longName}
-          onPress={() => this.onItemPress(category)}
+          onPress={() => this.onCategoryPress(category)}
         />
       )
     })
@@ -54,6 +62,12 @@ class HomeScreen extends Component {
     return (
       <ScrollView>
         <List>
+          <ViewAll 
+            title='View All'
+            data={this.props.data}
+            onPress={this.onViewAllPress}
+          />
+
           {this.renderCategories()}
         </List>
       </ScrollView>
