@@ -64,6 +64,7 @@ class CategoryScreen extends Component {
       <View style={{ flex: 1 }}>
         <SearchBar
           lightTheme
+          clearIcon
           placeholder='Search places...'
           onChangeText={text => this.searchFilterFunction(text)}
         />
