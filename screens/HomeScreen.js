@@ -1,19 +1,19 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, Text, Platform, ScrollView } from 'react-native';
 import { Button, List, ListItem } from 'react-native-elements';
-import { FUDAN } from '../data';
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: FUDAN.school,
+      headerTitle: navigation.state.params ? navigation.state.params.title : '',
       headerRight: (
         <Button 
           title="Map" 
           onPress={() => navigation.navigate({
             routeName: 'map',
-            params: { title: FUDAN.school } 
+            params: { title: navigation.state.params ? navigation.state.params.title : '' } 
           })}
           backgroundColor="rgba(0,0,0,0)"
           color="rgba(0, 122, 255, 1)"
@@ -25,6 +25,12 @@ class HomeScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.navigation.setParams({
+      title: this.props.data.school
+    });
+  }
+
   onItemPress = category => {
     this.props.navigation.navigate({
       routeName: 'category',
@@ -33,7 +39,7 @@ class HomeScreen extends Component {
   }
 
   renderCategories() {
-    return _.map(FUDAN.categories, category => {
+    return _.map(this.props.data.categories, category => {
       return (
         <ListItem
           title={category.longName}
@@ -55,4 +61,8 @@ class HomeScreen extends Component {
   }
 }
 
-export default HomeScreen;
+function mapStateToProps({ data }) {
+  return { data };
+}
+
+export default connect(mapStateToProps)(HomeScreen);

@@ -46,7 +46,7 @@ class CategoryScreen extends Component {
     return (
       <View style={{ flex: 1 }}>
         <SearchBar
-          lightTheme  
+          lightTheme
           placeholder='Search places...'
         />
         <ScrollView>

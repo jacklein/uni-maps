@@ -1,4 +1,4 @@
-export const FUDAN = {
+export const fudan = {
   school: 'Fudan University',
   categories: {
     sportsAndFitness: {
