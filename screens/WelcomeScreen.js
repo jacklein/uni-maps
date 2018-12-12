@@ -21,7 +21,7 @@ class WelcomeScreen extends Component {
   state = { school: null }
 
   async componentDidMount() {
-    //await AsyncStorage.removeItem('school'); // production 
+    await AsyncStorage.removeItem('school'); // production 
     let school = await AsyncStorage.getItem('school');
 
     if (school) {

@@ -52,7 +52,7 @@ class HomeScreen extends Component {
       <ScrollView>
         <List>
           <ViewAll 
-            title='View All'
+            title='View All Places'
             data={this.props.data}
             onPress={this.onViewAllPress}
           />

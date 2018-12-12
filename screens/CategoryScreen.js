@@ -24,6 +24,12 @@ class CategoryScreen extends Component {
     }
   }
 
+  state = { data: [] }
+
+  componentDidMount() {
+    this.setState({ data: this.props.navigation.state.params.places });
+  }
+
   onItemPress = place => {
     this.props.navigation.navigate({
       routeName: 'map',
@@ -32,7 +38,7 @@ class CategoryScreen extends Component {
   }
 
   renderPlaces() {
-    return this.props.navigation.state.params.places.map(place => {
+    return this.state.data.map(place => {
       return (
         <ListItem
           title={place.name}
@@ -43,12 +49,23 @@ class CategoryScreen extends Component {
     })
   }
 
+  searchFilterFunction = text => {
+    const newData = this.props.navigation.state.params.places.filter(place => {
+      const itemData = place.name.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+
+    this.setState({ data: newData });
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
         <SearchBar
           lightTheme
           placeholder='Search places...'
+          onChangeText={text => this.searchFilterFunction(text)}
         />
         <ScrollView>
           <List>
