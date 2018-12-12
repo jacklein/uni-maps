@@ -9,17 +9,6 @@ class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: navigation.state.params ? navigation.state.params.title : '',
-      headerRight: (
-        <Button 
-          title="Map" 
-          onPress={() => navigation.navigate({
-            routeName: 'map',
-            params: { title: navigation.state.params ? navigation.state.params.title : '' } 
-          })}
-          backgroundColor="rgba(0,0,0,0)"
-          color="rgba(0, 122, 255, 1)"
-        />
-      ),
       headerStyle: {
         marginTop: Platform.OS === 'android' ? 24 : 0
       }

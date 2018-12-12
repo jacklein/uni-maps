@@ -10,7 +10,7 @@ class MapScreen extends Component {
   }
 
   componentDidMount() {
-    console.log('map mounting');
+    console.log(this.props.navigation.state.params.places);
   }
   
   render() {
@@ -18,12 +18,24 @@ class MapScreen extends Component {
         <MapView
           style={{ flex: 1 }}
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude: 41.925100,
+            longitude: -87.656619,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-        />
+        >
+          {this.props.navigation.state.params.places.map(place => (
+            <MapView.Marker
+              key={place.name}
+              coordinate={{
+                latitude: place.latitude,
+                longitude: place.longitude
+              }}
+              title={place.name}
+              description='Marker Description'
+            />
+          ))}
+        </MapView>
     )
   }
 }

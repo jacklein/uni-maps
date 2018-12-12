@@ -11,7 +11,8 @@ class CategoryScreen extends Component {
           title="Map" 
           onPress={() => navigation.navigate({
             routeName: 'map',
-            params: { title: navigation.state.params.title } 
+            params: { title: navigation.state.params.title, 
+                      places: navigation.state.params.places } 
           })}
           backgroundColor="rgba(0,0,0,0)"
           color="rgba(0, 122, 255, 1)"
@@ -26,7 +27,7 @@ class CategoryScreen extends Component {
   onItemPress = place => {
     this.props.navigation.navigate({
       routeName: 'map',
-      params: { title: place.name } 
+      params: { title: place.name, places: [place] } 
     })
   }
 
