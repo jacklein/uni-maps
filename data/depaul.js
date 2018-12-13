@@ -1,5 +1,5 @@
 export const depaul = {
-  school: 'DePaul University',
+  name: 'DePaul University',
   initialRegion: {
     latitude: 41.910000,
     longitude: -87.645000,

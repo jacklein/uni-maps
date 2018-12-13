@@ -4,6 +4,6 @@ import {
 
 export const setData = (school, callback) => async dispatch => {
   const data = require('../data');
-  dispatch({ type: SET_DATA, payload: data[school] });
+  dispatch({ type: SET_DATA, payload: { schoolId: school, schoolInfo: data[school] } });
   callback();
 }

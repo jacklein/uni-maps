@@ -17,7 +17,7 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     this.props.navigation.setParams({
-      title: this.props.data.school
+      title: this.props.schoolInfo.name
     });
   }
 
@@ -26,7 +26,7 @@ class HomeScreen extends Component {
       routeName: 'category',
       params: { title, 
                 places, 
-                initialRegion: this.props.data.initialRegion }
+                initialRegion: this.props.schoolInfo.initialRegion }
     })
   }
 
@@ -35,12 +35,12 @@ class HomeScreen extends Component {
       routeName: 'category',
       params: { title: category.longName, 
                 places: category.places, 
-                initialRegion: this.props.data.initialRegion } 
+                initialRegion: this.props.schoolInfo.initialRegion } 
     })
   }
 
   renderCategories() {
-    return _.map(this.props.data.categories, category => {
+    return _.map(this.props.schoolInfo.categories, category => {
       return (
         <ListItem
           title={category.longName}
@@ -57,7 +57,7 @@ class HomeScreen extends Component {
         <List containerStyle={{ marginTop: 0 }}>
           <ViewAll 
             title='All Places'
-            data={this.props.data}
+            data={this.props.schoolInfo}
             onPress={this.onViewAllPress}
           />
 
@@ -69,7 +69,7 @@ class HomeScreen extends Component {
 }
 
 function mapStateToProps({ data }) {
-  return { data };
+  return { schoolInfo: data.schoolInfo };
 }
 
 export default connect(mapStateToProps)(HomeScreen);

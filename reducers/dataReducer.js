@@ -2,7 +2,12 @@ import {
   SET_DATA
 } from '../actions/types'
 
-export default function(state = {}, action) {
+const INITIAL_STATE = {
+  schoolId: null,
+  schoolInfo: null
+}
+
+export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case SET_DATA:
       return action.payload

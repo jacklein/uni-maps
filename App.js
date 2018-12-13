@@ -10,7 +10,7 @@ import HomeScreen from './screens/HomeScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import MapScreen from './screens/MapScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
-import SettingsScreen from './screens/SettingsScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 const HomeStack = {
   screen: createStackNavigator({
@@ -38,10 +38,12 @@ const FavoritesStack = {
 };
 
 const Settings = {
-  screen: SettingsScreen,
+  screen: createStackNavigator({
+    ProfileScreen
+  }),
   navigationOptions: {
     tabBarIcon: ({ tintColor }) => {
-      return <Icon name="settings" size={30} color={tintColor} />
+      return <Icon name="person" size={30} color={tintColor} />
     }
   }
 }
