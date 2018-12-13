@@ -11,6 +11,7 @@ import CategoryScreen from './screens/CategoryScreen';
 import MapScreen from './screens/MapScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import EditProfileScreen from './screens/EditProfileScreen';
 
 const HomeStack = {
   screen: createStackNavigator({
@@ -37,9 +38,10 @@ const FavoritesStack = {
   }
 };
 
-const Settings = {
+const ProfileStack = {
   screen: createStackNavigator({
-    ProfileScreen
+    profile: ProfileScreen,
+    editprofile: EditProfileScreen
   }),
   navigationOptions: {
     tabBarIcon: ({ tintColor }) => {
@@ -53,8 +55,8 @@ const AppNavigator = createSwitchNavigator({
   main: createBottomTabNavigator(
     {
       home: HomeStack,
-      favorites: FavoritesStack,
-      settings: Settings
+      //favorites: FavoritesStack,
+      profile: ProfileStack
     },
     {
       tabBarOptions: {

@@ -8,11 +8,7 @@ import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
   { text: 'Uni Maps' },
-  { text: 'Select Your School', 
-    items: [
-      { label: 'DePaul University', value: 'depaul' }, 
-    ]
-  }
+  { text: 'Select Your School' }
 ];
 
 class WelcomeScreen extends Component {
@@ -29,11 +25,6 @@ class WelcomeScreen extends Component {
     }
   }
 
-  advanceToHome(school) {
-    this.props.setData(school, () => {
-      this.props.navigation.navigate('home');
-    });
-  }
 
   onChange = school => {
     this.setState({ school: school || false });
@@ -41,7 +32,9 @@ class WelcomeScreen extends Component {
 
   onSlidesComplete = async () => {
     await AsyncStorage.setItem('school', this.state.school);
-    this.advanceToHome(this.state.school)
+    this.props.setData(this.state.school, () => {
+      this.props.navigation.navigate('home');
+    });
   }
 
   render() {

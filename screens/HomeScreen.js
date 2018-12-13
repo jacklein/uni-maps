@@ -21,6 +21,15 @@ class HomeScreen extends Component {
     });
   }
 
+  // if a user changes their school
+  componentDidUpdate(prevProps) {
+    if (prevProps.schoolInfo.name !== this.props.schoolInfo.name) {
+      this.props.navigation.setParams({
+        title: this.props.schoolInfo.name
+      });
+    }
+  }
+
   onViewAllPress = (title, places) => {
     this.props.navigation.navigate({
       routeName: 'category',

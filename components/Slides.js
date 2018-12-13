@@ -1,38 +1,20 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
-import RNPickerSelect from 'react-native-picker-select';
+import SchoolPicker from './SchoolPicker';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class Slides extends Component {
-  onSelectComplete() {
-    if (this.props.pickerValue) {
-      this.props.onSelectComplete();
-    }
-  }
 
   renderLastSlide(slide, index) {
     if (index === this.props.data.length - 1){
       return (
         <View style={{ marginTop: 15 }}>
-          <RNPickerSelect
-              placeholder={{
-                  label: 'Select a school...',
-                  value: null,
-                  color: '#9EA0A4',
-              }}
-              items={slide.items}
-              onValueChange={(value) => this.props.onChange(value)}
-              style={{ ...pickerSelectStyles }}
-              value={this.props.pickerValue}
-          />
-          <Button
-            title="Continue"
-            raised
-            backgroundColor="#009688"
-            buttonStyle={styles.buttonStyle}
-            onPress={() => this.onSelectComplete()}
+          <SchoolPicker
+            pickerValue={this.props.pickerValue}
+            onValueChange={value => this.props.onChange(value)}
+            onSelectComplete={() => this.props.onSelectComplete()}
           />
         </View>
       )

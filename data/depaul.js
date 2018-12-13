@@ -49,6 +49,14 @@ export const depaul = {
         { name: 'Student Parking Lot P', latitude: 41.925892, longitude: -87.652607 }
       ]
     },
+    printinStations: {
+      longName: 'Printing Stations',
+      places: [
+        { name: 'SAC Pit Printing Station', latitude: 41.924207, longitude: -87.655685 },
+        { name: 'Arts & Letters 1st Floor Printing Station', latitude: 41.924135, longitude: -87.654726 },
+        { name: '14 E Jackson Printing Station', latitude: 41.878568, longitude: -87.627452 },
+      ]
+    },
     sportsAndRecreation: {
       longName: 'Sports and Recreation',
       places: [

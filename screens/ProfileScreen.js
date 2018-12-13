@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, Platform, AsyncStorage } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 class ProfileScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
+      headerBackTitle: 'Cancel',
       headerTitle: 'Profile',
       headerRight: (
         <Button 
           title="Edit" 
-          onPress={() => console.log('edit school')}
+          onPress={() => navigation.navigate({
+            routeName: 'editprofile'
+          })}
           backgroundColor="rgba(0,0,0,0)"
           color="rgba(0, 122, 255, 1)"
         />
@@ -19,6 +22,10 @@ class ProfileScreen extends Component {
         marginTop: Platform.OS === 'android' ? 24 : 0
       }
     }
+  }
+
+  componentDidMount() {
+    console.log('profile mounting');
   }
 
   render() {

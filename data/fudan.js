@@ -1,14 +1,13 @@
 export const fudan = {
-  school: 'Fudan University',
+  name: 'Fudan University',
   categories: {
     sportsAndFitness: {
       longName: 'Sports and Fitness',
       places: [
-        { name: 'North Gym', latitude: 0, longitude: 0 },
+        { name: 'Fudan', latitude: 0, longitude: 0 },
         { name: 'South Gym', latitude: 0, longitude: 0 }, 
         { name: 'Tennis Courts', latitude: 0, longitude: 0 }, 
         { name: 'Track', latitude: 0, longitude: 0 }, 
-        { name: 'Soccer Field', latitude: 0, longitude: 0 },  
       ]
     },
     teachingBuildings: {
