@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, Platform, ScrollView } from 'react-native';
+import { View, Text, Platform, ScrollView, FlatList } from 'react-native';
 import { Button, List, ListItem } from 'react-native-elements';
 import ViewAll from '../components/ViewAll';
 

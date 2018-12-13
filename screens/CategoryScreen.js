@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Platform, ScrollView } from 'react-native';
+import { View, Text, Platform, ScrollView, FlatList } from 'react-native';
 import { Button, List, ListItem, SearchBar } from 'react-native-elements';
 
 class CategoryScreen extends Component {
@@ -45,16 +45,24 @@ class CategoryScreen extends Component {
     })
   }
 
-  renderPlaces() {
-    return this.state.data.map(place => {
-      return (
-        <ListItem
-          title={place.name}
-          key={place.name}
-          onPress={() => this.onItemPress(place)}
-        />
-      )
-    })
+  renderItem = ({ item }) => {
+    return (
+      <ListItem
+        title={item.name}
+        onPress={() => this.onItemPress(item)}
+      />
+    )
+  }
+
+  renderHeader = () => {
+    return (
+      <SearchBar
+        lightTheme
+        clearIcon
+        placeholder='Search...'
+        onChangeText={text => this.searchFilterFunction(text)}
+      />
+    )
   }
 
   searchFilterFunction = text => {
@@ -70,15 +78,14 @@ class CategoryScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <SearchBar
-          lightTheme
-          clearIcon
-          placeholder='Search places...'
-          onChangeText={text => this.searchFilterFunction(text)}
-        />
         <ScrollView>
           <List>
-            {this.renderPlaces()}
+            <FlatList
+              data={this.state.data}
+              renderItem={this.renderItem}
+              keyExtractor={item => item.name}
+              ListHeaderComponent={this.renderHeader}
+            />
           </List>
         </ScrollView>
       </View>
