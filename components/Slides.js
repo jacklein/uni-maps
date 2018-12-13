@@ -8,7 +8,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 class Slides extends Component {
   onSelectComplete() {
     if (this.props.pickerValue) {
-      this.props.onComplete();
+      this.props.onSelectComplete();
     }
   }
 

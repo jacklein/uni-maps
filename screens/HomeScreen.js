@@ -24,14 +24,18 @@ class HomeScreen extends Component {
   onViewAllPress = (title, places) => {
     this.props.navigation.navigate({
       routeName: 'category',
-      params: { title, places }
+      params: { title, 
+                places, 
+                initialRegion: this.props.data.initialRegion }
     })
   }
 
   onCategoryPress = category => {
     this.props.navigation.navigate({
       routeName: 'category',
-      params: { title: category.longName, places: category.places } 
+      params: { title: category.longName, 
+                places: category.places, 
+                initialRegion: this.props.data.initialRegion } 
     })
   }
 

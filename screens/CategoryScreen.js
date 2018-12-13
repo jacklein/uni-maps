@@ -12,7 +12,8 @@ class CategoryScreen extends Component {
           onPress={() => navigation.navigate({
             routeName: 'map',
             params: { title: navigation.state.params.title, 
-                      places: navigation.state.params.places } 
+                      places: navigation.state.params.places,
+                      initialRegion: navigation.state.params.initialRegion } 
           })}
           backgroundColor="rgba(0,0,0,0)"
           color="rgba(0, 122, 255, 1)"
@@ -31,9 +32,16 @@ class CategoryScreen extends Component {
   }
 
   onItemPress = place => {
+    const initialRegion = {
+      latitude: place.latitude,
+      longitude: place.longitude,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    };
+    
     this.props.navigation.navigate({
       routeName: 'map',
-      params: { title: place.name, places: [place] } 
+      params: { title: place.name, places: [place], initialRegion } 
     })
   }
 

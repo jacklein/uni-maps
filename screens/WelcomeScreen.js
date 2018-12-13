@@ -10,9 +10,7 @@ const SLIDE_DATA = [
   { text: 'Uni Maps' },
   { text: 'Select Your School', 
     items: [
-      { label: 'Fudan University', value: 'fudan' },
       { label: 'DePaul University', value: 'depaul' }, 
-      { label: 'Tongji University', value: 'tongji' }  
     ]
   }
 ];
@@ -56,7 +54,7 @@ class WelcomeScreen extends Component {
         data={SLIDE_DATA}
         pickerValue={this.state.school} 
         onChange={this.onChange}
-        onComplete={this.onSlidesComplete} />
+        onSelectComplete={this.onSlidesComplete} />
     )
   }
 }
