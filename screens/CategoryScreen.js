@@ -79,7 +79,7 @@ class CategoryScreen extends Component {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <List>
+          <List containerStyle={{ marginTop: 0 }}>
             <FlatList
               data={this.state.data}
               renderItem={this.renderItem}
@@ -90,6 +90,12 @@ class CategoryScreen extends Component {
         </ScrollView>
       </View>
     )
+  }
+}
+
+const styles = {
+  containerStyle: {
+    marginTop: '200'
   }
 }
 

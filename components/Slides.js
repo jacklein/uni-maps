@@ -15,7 +15,7 @@ class Slides extends Component {
   renderLastSlide(slide, index) {
     if (index === this.props.data.length - 1){
       return (
-        <View>
+        <View style={{ marginTop: 15 }}>
           <RNPickerSelect
               placeholder={{
                   label: 'Select a school...',
@@ -30,6 +30,7 @@ class Slides extends Component {
           <Button
             title="Continue"
             raised
+            backgroundColor="#009688"
             buttonStyle={styles.buttonStyle}
             onPress={() => this.onSelectComplete()}
           />
@@ -77,7 +78,7 @@ const styles = {
     textAlign: 'center'
   },
   buttonStyle: {
-    marginTop: 15
+    marginTop: 30
   },
 };
 

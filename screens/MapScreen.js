@@ -23,7 +23,7 @@ class MapScreen extends Component {
                 longitude: place.longitude
               }}
               title={place.name}
-              description='Marker Description'
+              description=''
             />
           ))}
         </MapView>

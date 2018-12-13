@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, Platform, ScrollView, FlatList } from 'react-native';
-import { Button, List, ListItem } from 'react-native-elements';
+import { Button, List, ListItem, Icon } from 'react-native-elements';
 import ViewAll from '../components/ViewAll';
 
 class HomeScreen extends Component {
@@ -54,7 +54,7 @@ class HomeScreen extends Component {
   render() {
     return (
       <ScrollView>
-        <List>
+        <List containerStyle={{ marginTop: 0 }}>
           <ViewAll 
             title='All Places'
             data={this.props.data}

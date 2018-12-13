@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
 
@@ -11,24 +12,54 @@ import MapScreen from './screens/MapScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
 import SettingsScreen from './screens/SettingsScreen';
 
+const HomeStack = {
+  screen: createStackNavigator({
+    home: HomeScreen,
+    category: CategoryScreen,
+    map: MapScreen
+  }),
+  navigationOptions: {
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name="home" size={30} color={tintColor} />
+    }
+  }
+}
+
+const FavoritesStack = {
+  screen: createStackNavigator({
+    favorites: FavoritesScreen,
+    map: MapScreen 
+  }),
+  navigationOptions: {
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name="star" size={30} color={tintColor} />
+    }
+  }
+};
+
+const Settings = {
+  screen: SettingsScreen,
+  navigationOptions: {
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name="settings" size={30} color={tintColor} />
+    }
+  }
+}
+
 const AppNavigator = createSwitchNavigator({
   welcome: WelcomeScreen,
-  main: createBottomTabNavigator({
-    home: {
-      screen: createStackNavigator({
-        home: HomeScreen,
-        category: CategoryScreen,
-        map: MapScreen
-      })
+  main: createBottomTabNavigator(
+    {
+      home: HomeStack,
+      favorites: FavoritesStack,
+      settings: Settings
     },
-    favorites: {
-      screen: createStackNavigator({
-        favorites: FavoritesScreen,
-        map: MapScreen 
-      })
-    },
-    settings: SettingsScreen
-  })
+    {
+      tabBarOptions: {
+        showLabel: false
+      }
+    }
+  )
 })
 
 const AppContainer = createAppContainer(AppNavigator)
