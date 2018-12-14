@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 class ProfileScreen extends Component {
@@ -26,18 +26,18 @@ class ProfileScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Your university: {this.props.schoolInfo.name}</Text>
+      <View>
+        <Card title="Your University">
+          <Text style={styles.textStyle}>{this.props.schoolInfo.name}</Text>
+        </Card>
       </View>
     )
   }
 }
 
 const styles = {
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+  textStyle: {
+    textAlign: 'center'
   }
 }
 

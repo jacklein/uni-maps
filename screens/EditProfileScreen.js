@@ -37,7 +37,7 @@ class EditProfileScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Select Your School</Text>
+        <Text style={styles.textStyle}>Select Your School</Text>
         <SchoolPicker 
           pickerValue={this.state.school}
           onValueChange={this.onValueChange}
@@ -49,11 +49,14 @@ class EditProfileScreen extends Component {
   }
 }
 
+const offset = 24;
 const styles = {
+  textStyle: {
+    textAlign: 'center',
+    fontSize: offset
+  },
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginTop: offset * 2,
   }
 }
 

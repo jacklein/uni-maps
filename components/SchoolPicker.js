@@ -17,18 +17,20 @@ const SchoolPicker = props => {
   }
 
   return (
-    <View style={{ marginTop: 15, width: 300 }}>
-      <RNPickerSelect
-          placeholder={{
-              label: 'Select a school...',
-              value: null,
-              color: '#9EA0A4',
-          }}
-          items={SCHOOLS}
-          onValueChange={(value) => props.onValueChange(value)}
-          style={{ ...pickerSelectStyles }}
-          value={props.pickerValue}
-      />
+    <View style={styles.container}>
+      <View style={styles.pickerStyle}>
+        <RNPickerSelect
+            placeholder={{
+                label: 'Select a school...',
+                value: null,
+                color: '#9EA0A4',
+            }}
+            items={SCHOOLS}
+            onValueChange={(value) => props.onValueChange(value)}
+            style={{ ...pickerSelectStyles }}
+            value={props.pickerValue}
+        />
+      </View>
       <Button
         title={props.buttonText}
         raised
@@ -52,36 +54,43 @@ SchoolPicker.defaultProps = {
   onSelectComplete: () => {}
 }
 
+const offset = 24;
 const styles = {
+  container: {
+    marginTop: offset,
+  },
   buttonStyle: {
     backgroundColor: '#0288D1',
-    marginTop: 30
+    margin: offset
   },
+  pickerStyle: {
+    marginHorizontal: offset / 2
+  }
 };
 
 const pickerSelectStyles = {
   inputIOS: {
-      fontSize: 16,
-      paddingTop: 13,
-      paddingHorizontal: 10,
-      paddingBottom: 12,
-      borderWidth: 1,
-      borderColor: 'gray',
-      borderRadius: 4,
-      backgroundColor: 'white',
-      color: 'black',
+    fontSize: 16,
+    paddingTop: 13,
+    paddingHorizontal: 10,
+    paddingBottom: 12,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    backgroundColor: 'white',
+    color: 'black',
   },
   inputAndroid: {
-      fontSize: 16,
-      paddingTop: 13,
-      paddingHorizontal: 10,
-      paddingBottom: 12,
-      borderWidth: 1,
-      borderColor: 'gray',
-      borderRadius: 4,
-      backgroundColor: 'white',
-      color: 'black',
-  },
+    fontSize: 16,
+    paddingTop: 13,
+    paddingHorizontal: 10,
+    paddingBottom: 12,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    backgroundColor: 'white',
+    color: 'black',
+  }
 };
 
 export default SchoolPicker;
