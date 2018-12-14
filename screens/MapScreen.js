@@ -8,25 +8,37 @@ class MapScreen extends Component {
       headerTitle: navigation.state.params.title
     }
   }
+
+  state = { calloutIsRendered: false};
+
+  renderCallout = () => {
+    if (!this.state.calloutIsRendered) {
+      this.setState({calloutIsRendered: true});
+      if (this.props.navigation.state.params.singleItem) {
+        this.refs['marker'].showCallout();
+      }
+    }
+  }
   
   render() {
     return (
-        <MapView
-          style={{ flex: 1 }}
-          initialRegion={this.props.navigation.state.params.initialRegion}
-        >
-          {this.props.navigation.state.params.places.map(place => (
-            <MapView.Marker
-              key={place.name}
-              coordinate={{
-                latitude: place.latitude,
-                longitude: place.longitude
-              }}
-              title={place.name}
-              description=''
-            />
-          ))}
-        </MapView>
+      <MapView
+        style={{ flex: 1 }}
+        initialRegion={this.props.navigation.state.params.initialRegion}
+        onRegionChangeComplete={this.renderCallout}
+      >
+        {this.props.navigation.state.params.places.map(place => (
+          <MapView.Marker
+            key={place.name}
+            coordinate={{
+              latitude: place.latitude,
+              longitude: place.longitude
+            }}
+            title={place.name}
+            ref={this.props.navigation.state.params.singleItem ? 'marker' : null}
+          />
+        ))}
+      </MapView>
     )
   }
 }

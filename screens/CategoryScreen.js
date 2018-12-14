@@ -41,7 +41,7 @@ class CategoryScreen extends Component {
     
     this.props.navigation.navigate({
       routeName: 'map',
-      params: { title: place.name, places: [place], initialRegion } 
+      params: { title: place.name, places: [place], initialRegion, singleItem: true } 
     })
   }
 

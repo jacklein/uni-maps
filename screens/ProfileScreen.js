@@ -24,10 +24,6 @@ class ProfileScreen extends Component {
     }
   }
 
-  componentDidMount() {
-    console.log('profile mounting');
-  }
-
   render() {
     return (
       <View style={styles.container}>
