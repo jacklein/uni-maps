@@ -5,8 +5,8 @@ import RNPickerSelect from 'react-native-picker-select';
 import PropTypes from 'prop-types';
 
 const SCHOOLS = [
-  { label: 'DePaul University', value: 'depaul' },
-  { label: 'Fudan University', value: 'fudan' }
+  { label: 'DePaul University', value: 'depaul' }
+  //{ label: 'Fudan University', value: 'fudan' }
 ]
 
 const SchoolPicker = props => {
