@@ -17,7 +17,7 @@ const SchoolPicker = props => {
   }
 
   return (
-    <View style={{ marginTop: 15 }}>
+    <View style={{ marginTop: 15, width: 300 }}>
       <RNPickerSelect
           placeholder={{
               label: 'Select a school...',
@@ -30,9 +30,8 @@ const SchoolPicker = props => {
           value={props.pickerValue}
       />
       <Button
-        title="Continue"
+        title={props.buttonText}
         raised
-        backgroundColor="#009688"
         buttonStyle={styles.buttonStyle}
         onPress={() => onSelectComplete()}
       />
@@ -41,11 +40,13 @@ const SchoolPicker = props => {
 }
 
 SchoolPicker.propTypes = {
+  buttonText: PropTypes.string,
   onValueChange: PropTypes.func,
   onSelectComplete: PropTypes.func
 }
 
 SchoolPicker.defaultProps = {
+  buttonText: 'Save',
   pickerValue: null,
   onValueChange: () => {},
   onSelectComplete: () => {}
@@ -53,6 +54,7 @@ SchoolPicker.defaultProps = {
 
 const styles = {
   buttonStyle: {
+    backgroundColor: '#0288D1',
     marginTop: 30
   },
 };

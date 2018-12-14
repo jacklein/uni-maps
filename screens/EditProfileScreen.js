@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Platform, AsyncStorage } from 'react-native';
+import { StackActions, NavigationActions } from 'react-navigation';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -28,7 +29,8 @@ class EditProfileScreen extends Component {
   onSelectComplete = async () => {
     await AsyncStorage.setItem('school', this.state.school);
     this.props.setData(this.state.school, () => {
-      this.props.navigation.navigate('profile');
+      this.props.navigation.dispatch(StackActions.popToTop());
+      this.props.navigation.navigate('home');
     });
   }
 
@@ -40,6 +42,7 @@ class EditProfileScreen extends Component {
           pickerValue={this.state.school}
           onValueChange={this.onValueChange}
           onSelectComplete={this.onSelectComplete}
+          buttonText="Save"
         />
       </View>
     )

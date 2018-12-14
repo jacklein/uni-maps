@@ -7,15 +7,15 @@ import { AppLoading } from 'expo';
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
-  { text: 'Uni Maps' },
-  { text: 'Select Your School' }
+  { text: 'Uni Maps', color: '#03A9F4' },
+  { text: 'Select Your School', color: '#009688' }
 ];
 
 class WelcomeScreen extends Component {
   state = { school: null }
 
   async componentDidMount() {
-    await AsyncStorage.removeItem('school'); // production 
+    //await AsyncStorage.removeItem('school'); // production 
     let school = await AsyncStorage.getItem('school');
 
     if (school) {
@@ -25,16 +25,19 @@ class WelcomeScreen extends Component {
     }
   }
 
-
+  advanceToHome = school => {
+    this.props.setData(school, () => {
+      this.props.navigation.navigate('home');
+    });
+  }
+  
   onChange = school => {
     this.setState({ school: school || false });
   }
 
   onSlidesComplete = async () => {
     await AsyncStorage.setItem('school', this.state.school);
-    this.props.setData(this.state.school, () => {
-      this.props.navigation.navigate('home');
-    });
+    this.advanceToHome(this.state.school);
   }
 
   render() {

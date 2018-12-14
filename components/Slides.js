@@ -15,6 +15,7 @@ class Slides extends Component {
             pickerValue={this.props.pickerValue}
             onValueChange={value => this.props.onChange(value)}
             onSelectComplete={() => this.props.onSelectComplete()}
+            buttonText="continue"
           />
         </View>
       )
@@ -26,7 +27,7 @@ class Slides extends Component {
       return (
         <View
           key={slide.text}
-          style={styles.slideStyle}
+          style={[styles.slideStyle, { backgroundColor: slide.color }]}
         >
           <Text style={styles.textStyle}>{slide.text}</Text>
           {this.renderLastSlide(slide, index)}
@@ -57,6 +58,7 @@ const styles = {
   },
   textStyle: {
     fontSize: 30,
+    color: 'white',
     textAlign: 'center'
   },
   buttonStyle: {

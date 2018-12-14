@@ -54,9 +54,9 @@ const AppNavigator = createSwitchNavigator({
   welcome: WelcomeScreen,
   main: createBottomTabNavigator(
     {
-      home: HomeStack,
+      homeStack: HomeStack,
       //favorites: FavoritesStack,
-      profile: ProfileStack
+      profileStack: ProfileStack
     },
     {
       tabBarOptions: {
