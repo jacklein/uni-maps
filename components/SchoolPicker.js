@@ -18,7 +18,7 @@ const SchoolPicker = props => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.pickerStyle}>
+      <View style={styles.picker}>
         <RNPickerSelect
             placeholder={{
                 label: 'Select a school...',
@@ -34,7 +34,7 @@ const SchoolPicker = props => {
       <Button
         title={props.buttonText}
         raised
-        buttonStyle={styles.buttonStyle}
+        buttonStyle={styles.button}
         onPress={() => onSelectComplete()}
       />
     </View>
@@ -59,11 +59,11 @@ const styles = {
   container: {
     marginTop: offset,
   },
-  buttonStyle: {
+  button: {
     backgroundColor: '#0288D1',
     margin: offset
   },
-  pickerStyle: {
+  picker: {
     marginHorizontal: offset / 2
   }
 };

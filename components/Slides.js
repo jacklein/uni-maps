@@ -25,9 +25,9 @@ class Slides extends Component {
       return (
         <View
           key={slide.text}
-          style={[styles.slideStyle, { backgroundColor: slide.color }]}
+          style={[styles.slide, { backgroundColor: slide.color }]}
         >
-          <Text style={styles.textStyle}>{slide.text}</Text>
+          <Text style={styles.text}>{slide.text}</Text>
           {this.renderLastSlide(slide, index)}
         </View>
       )
@@ -47,17 +47,14 @@ class Slides extends Component {
 }
 
 const styles = {
-  slideStyle: {
+  slide: {
     width: SCREEN_WIDTH,
     justifyContent: 'center',
   },
-  textStyle: {
+  text: {
     fontSize: 30,
     color: 'white',
     textAlign: 'center'
-  },
-  buttonStyle: {
-    marginTop: 30
   },
 };
 

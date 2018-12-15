@@ -28,7 +28,7 @@ class ProfileScreen extends Component {
     return (
       <View>
         <Card title="Your University">
-          <Text style={styles.textStyle}>{this.props.schoolInfo.name}</Text>
+          <Text style={styles.text}>{this.props.schoolInfo.name}</Text>
         </Card>
       </View>
     )
@@ -36,7 +36,7 @@ class ProfileScreen extends Component {
 }
 
 const styles = {
-  textStyle: {
+  text: {
     textAlign: 'center'
   }
 }
