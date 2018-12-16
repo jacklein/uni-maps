@@ -77,16 +77,14 @@ class CategoryScreen extends Component {
 
   render() {
     return (
-      <View>
-        <List containerStyle={{ marginTop: 0 }}>
-          <FlatList
-            data={this.state.data}
-            renderItem={this.renderItem}
-            keyExtractor={item => item.name}
-            ListHeaderComponent={this.renderHeader}
-          />
-        </List>
-      </View>
+      <List containerStyle={{ marginTop: 0, flex: 1 }}>
+        <FlatList
+          data={this.state.data}
+          renderItem={this.renderItem}
+          keyExtractor={item => item.name}
+          ListHeaderComponent={this.renderHeader}
+        />
+      </List>
     )
   }
 }
