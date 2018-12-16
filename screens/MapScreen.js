@@ -11,7 +11,11 @@ class MapScreen extends Component {
     }
   }
 
-  state = { calloutIsRendered: false, locationInfo: null };
+  state = { region: null, calloutIsRendered: false, locationInfo: null };
+
+  componentDidMount(){
+    this.setState({ region: this.props.navigation.state.params.initialRegion });
+  }
 
   // renders callout if singleItem 
   renderCallout = () => {
@@ -37,6 +41,12 @@ class MapScreen extends Component {
         latitude: event.nativeEvent.coordinate.latitude,
         longitude: event.nativeEvent.coordinate.longitude,
         name: event.nativeEvent.id
+      },
+      region: {
+        latitude: event.nativeEvent.coordinate.latitude,
+        longitude: event.nativeEvent.coordinate.longitude,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
       }
     });
   }
@@ -57,7 +67,7 @@ class MapScreen extends Component {
       <View style={{ flex: 1}}>
         <MapView
           style={{ flex: 1 }}
-          initialRegion={this.props.navigation.state.params.initialRegion}
+          region={this.state.region || this.props.navigation.state.params.initialRegion}
           onRegionChangeComplete={this.renderCallout}
           provider="google"
           showsUserLocation={true}
@@ -70,14 +80,14 @@ class MapScreen extends Component {
                 longitude: place.longitude
               }}
               title={place.name}
-              description='place description'
+              description={place.description || 'description'}
               identifier={place.name}
               onPress={(event) => this.handleMarkerPress(event)}
               ref={this.props.navigation.state.params.singleItem ? 'marker' : null}
             />
           ))}
         </MapView>
-        
+
         {this.renderDirections()}
       </View>
     )
