@@ -7,15 +7,15 @@ import { AppLoading } from 'expo';
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
-  { text: 'Uni Maps', color: '#03A9F4' },
-  { text: 'Select Your School', color: '#009688' }
+  { text: 'Uni Maps', color: '#03A9F4', fontSize: 56 },
+  { text: 'Select Your School', color: '#009688', fontSize: 30 }
 ];
 
 class WelcomeScreen extends Component {
   state = { school: null }
 
   async componentDidMount() {
-    await AsyncStorage.removeItem('school'); // production 
+    //await AsyncStorage.removeItem('school'); // production 
     let school = await AsyncStorage.getItem('school');
 
     if (school) {

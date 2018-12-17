@@ -27,7 +27,7 @@ class Slides extends Component {
           key={slide.text}
           style={[styles.slide, { backgroundColor: slide.color }]}
         >
-          <Text style={styles.text}>{slide.text}</Text>
+          <Text style={[styles.text, { fontSize: slide.fontSize }]}>{slide.text}</Text>
           {this.renderLastSlide(slide, index)}
         </View>
       )
@@ -53,7 +53,6 @@ const styles = {
   },
   text: {
     fontFamily: 'karla-bold',
-    fontSize: 30,
     color: 'white',
     textAlign: 'center'
   },
