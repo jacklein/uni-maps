@@ -84,6 +84,9 @@ var styles = StyleSheet.create({
     marginTop: 0,
     borderTopWidth: 0
   },
+  text: {
+    fontFamily: 'karla-regular'
+  },
   separator: {
     borderBottomColor: '#bbb',
     borderBottomWidth: StyleSheet.hairlineWidth,

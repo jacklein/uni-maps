@@ -62,6 +62,8 @@ class CategoryScreen extends Component {
         clearIcon
         placeholder='Search...'
         onChangeText={text => this.searchFilterFunction(text)}
+        containerStyle={styles.searchBarContainer}
+        inputStyle={styles.searchBarInput}
       />
     )
   }
@@ -93,12 +95,20 @@ class CategoryScreen extends Component {
 var styles = StyleSheet.create({
   container: {
     marginTop: 0,
-    borderTopWidth: 0
+    borderTopWidth: 0,
+    flex: 1
   },
   separator: {
     borderBottomColor: '#bbb',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  searchBarContainer: {
+    backgroundColor: 'white',
+    borderTopColor: 'white'
+  },
+  searchBarInput: {
+    backgroundColor: '#d3d3d3'
+  }
 });
 
 export default CategoryScreen;

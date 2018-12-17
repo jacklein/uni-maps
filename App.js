@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Font, AppLoading } from 'expo';
+import { StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
@@ -69,12 +70,25 @@ const AppNavigator = createSwitchNavigator({
 const AppContainer = createAppContainer(AppNavigator)
 
 export default class App extends React.Component {
+  state = { fontLoaded: false }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'karla-regular': require('./assets/fonts/Karla-Regular.ttf'),
+      'karla-bold': require('./assets/fonts/Karla-Bold.ttf')
+    });
+
+    this.setState({ fontLoaded: true });
+  }
+
   render() {
     return (
-      <Provider store={store}>
-        <AppContainer />
-      </Provider>
-    );
+      this.state.fontLoaded ? (
+        <Provider store={store}>
+          <AppContainer />
+        </Provider>
+      ) : <AppLoading />
+    )
   }
 }
 

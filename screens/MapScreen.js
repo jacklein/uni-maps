@@ -62,7 +62,6 @@ class MapScreen extends Component {
   }
   
   render() {
-    console.log(this.state.locationInfo);
     return (
       <View style={{ flex: 1}}>
         <MapView

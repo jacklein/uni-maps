@@ -8,8 +8,8 @@ const ViewAll = props => {
     _.map(props.data.categories, category => {
       all.push(...category.places);
     })
-
-    return all;
+   
+    return all.sort((a,b) => a.name.localeCompare(b.name));
   }
 
   return(
