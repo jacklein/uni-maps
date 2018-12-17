@@ -64,7 +64,7 @@ const styles = {
     margin: offset
   },
   picker: {
-    marginHorizontal: offset / 2
+    marginHorizontal: offset,
   }
 };
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Platform, ScrollView, FlatList } from 'react-native';
+import { Platform, FlatList, StyleSheet } from 'react-native';
 import { Button, List, ListItem, SearchBar } from 'react-native-elements';
 
 class CategoryScreen extends Component {
@@ -50,6 +50,7 @@ class CategoryScreen extends Component {
       <ListItem
         title={item.name}
         onPress={() => this.onItemPress(item)}
+        containerStyle={styles.separator}
       />
     )
   }
@@ -77,7 +78,7 @@ class CategoryScreen extends Component {
 
   render() {
     return (
-      <List containerStyle={{ marginTop: 0, flex: 1 }}>
+      <List containerStyle={styles.container}>
         <FlatList
           data={this.state.data}
           renderItem={this.renderItem}
@@ -88,5 +89,16 @@ class CategoryScreen extends Component {
     )
   }
 }
+
+var styles = StyleSheet.create({
+  container: {
+    marginTop: 0,
+    borderTopWidth: 0
+  },
+  separator: {
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+});
 
 export default CategoryScreen;

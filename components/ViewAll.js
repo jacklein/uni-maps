@@ -17,6 +17,7 @@ const ViewAll = props => {
       title={props.title}
       key={props.title}
       onPress={() => props.onPress('All Places', renderAllPlaces())}
+      containerStyle={props.containerStyle}
     />
   )
 }

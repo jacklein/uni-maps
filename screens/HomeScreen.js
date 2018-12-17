@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, Platform, ScrollView, FlatList } from 'react-native';
-import { Button, List, ListItem, Icon } from 'react-native-elements';
+import { Platform, ScrollView, StyleSheet } from 'react-native';
+import { List, ListItem } from 'react-native-elements';
 import ViewAll from '../components/ViewAll';
 
 class HomeScreen extends Component {
@@ -55,6 +55,7 @@ class HomeScreen extends Component {
           title={category.longName}
           key={category.longName}
           onPress={() => this.onCategoryPress(category)}
+          containerStyle={styles.separator}
         />
       )
     })
@@ -63,11 +64,12 @@ class HomeScreen extends Component {
   render() {
     return (
       <ScrollView>
-        <List containerStyle={{ marginTop: 0 }}>
+        <List containerStyle={styles.container}>
           <ViewAll 
             title='All Places'
             data={this.props.schoolInfo}
             onPress={this.onViewAllPress}
+            containerStyle={styles.separator}
           />
 
           {this.renderCategories()}
@@ -76,6 +78,17 @@ class HomeScreen extends Component {
     )
   }
 }
+
+var styles = StyleSheet.create({
+  container: {
+    marginTop: 0,
+    borderTopWidth: 0
+  },
+  separator: {
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+});
 
 function mapStateToProps({ data }) {
   return { schoolInfo: data.schoolInfo };
