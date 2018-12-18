@@ -14,6 +14,7 @@ class BottomDrawer extends Component{
   constructor(props){
     super(props);
 
+    // config variables
     this.CONTAINER_HEIGHT = this.props.containerHeight;
     this.TOGGLE_UP = { x: 0, y: SCREEN_HEIGHT - (this.CONTAINER_HEIGHT + this.props.offset) };
     this.TOGGLE_DOWN = { x: 0, y: this.TOGGLE_UP.y + this.CONTAINER_HEIGHT / 1.5 }
@@ -42,7 +43,7 @@ class BottomDrawer extends Component{
     });
   }
 
-  // can't drag content more than its height
+  // can't drag content up more than its height
   restrictSwipe(gesture) {
     return (this.state.currentToggle.y + gesture.dy) > (SCREEN_HEIGHT - (this.CONTAINER_HEIGHT + this.props.offset));
   }
@@ -76,7 +77,7 @@ BottomDrawer.defaultProps = {
   renderContent: () => <View/>,
   containerHeight: 0,
   offset: 0,
-  startingPosition: 'yes'
+  startingPosition: 'up'
 };
 
 BottomDrawer.propTypes = {
