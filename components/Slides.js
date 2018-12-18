@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Dimensions } from 'react-native';
-import { Button } from 'react-native-elements';
 import SchoolPicker from './SchoolPicker';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
