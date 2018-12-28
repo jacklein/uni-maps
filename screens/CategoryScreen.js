@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, FlatList, StyleSheet } from 'react-native';
-import { Button, List, ListItem, SearchBar } from 'react-native-elements';
+import { Platform } from 'react-native';
+import { Button } from 'react-native-elements';
+import ItemList from '../components/ItemList';
 
 class CategoryScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -45,70 +46,14 @@ class CategoryScreen extends Component {
     })
   }
 
-  renderItem = ({ item }) => {
-    return (
-      <ListItem
-        title={item.name}
-        onPress={() => this.onItemPress(item)}
-        containerStyle={styles.separator}
-      />
-    )
-  }
-
-  renderHeader = () => {
-    return (
-      <SearchBar
-        lightTheme
-        clearIcon
-        placeholder='Search...'
-        onChangeText={text => this.searchFilterFunction(text)}
-        containerStyle={styles.searchBarContainer}
-        inputStyle={styles.searchBarInput}
-      />
-    )
-  }
-
-  searchFilterFunction = text => {
-    const newData = this.props.navigation.state.params.places.filter(place => {
-      const itemData = place.name.toUpperCase();
-      const textData = text.toUpperCase();
-      return itemData.indexOf(textData) > -1;
-    });
-
-    this.setState({ data: newData });
-  }
-
   render() {
     return (
-      <List containerStyle={styles.container}>
-        <FlatList
-          data={this.state.data}
-          renderItem={this.renderItem}
-          keyExtractor={item => item.name}
-          ListHeaderComponent={this.renderHeader}
-        />
-      </List>
+      <ItemList
+        onItemPress={this.onItemPress}
+        places={this.props.navigation.state.params.places}
+      />
     )
   }
 }
-
-var styles = StyleSheet.create({
-  container: {
-    marginTop: 0,
-    borderTopWidth: 0,
-    flex: 1
-  },
-  separator: {
-    borderBottomColor: '#bbb',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  searchBarContainer: {
-    backgroundColor: 'white',
-    borderTopColor: 'white'
-  },
-  searchBarInput: {
-    backgroundColor: '#d3d3d3'
-  }
-});
 
 export default CategoryScreen;

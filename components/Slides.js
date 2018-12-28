@@ -18,7 +18,7 @@ class Slides extends Component {
       )
     }
   }
-  
+
   renderSlides() {
     return this.props.data.map((slide, index) => {
       return (

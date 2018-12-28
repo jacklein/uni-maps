@@ -56,7 +56,7 @@ const AppNavigator = createSwitchNavigator({
   main: createBottomTabNavigator(
     {
       homeStack: HomeStack,
-      //favorites: FavoritesStack,
+      favorites: FavoritesStack,
       profileStack: ProfileStack
     },
     {

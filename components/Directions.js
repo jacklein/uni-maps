@@ -37,23 +37,20 @@ class Directions extends Component{
   render() {
     return (
       <BottomDrawer
-        renderContent={this.renderContent}
         containerHeight={CONTAINER_HEIGHT}
         offset={TAB_BAR_HEIGHT + Header.HEIGHT}
-        startingPosition='up'
-      />
+      >
+        {this.renderContent()}
+      </BottomDrawer>
     )
   }
 }
 
 const styles = StyleSheet.create({
   contentContainer: {
-    height: CONTAINER_HEIGHT,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    backgroundColor: 'white',
   },
   buttonContainer: {
     flexDirection: 'row',
