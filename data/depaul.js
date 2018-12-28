@@ -142,6 +142,8 @@ export const depaul = {
           description: 'The University Center (UC) is an 18-story multi-college residence hall that houses students from DePaul, Columbia College and Roosevelt University.' },
         { id: 56, name: 'University Hall', latitude: 41.924761, longitude: -87.656954,
           description: 'University Hall offers double, super-double and triple semi-suite rooms with large closets and shared bathrooms. It also houses Radio DePaul and The DePaulia.' }, 
+        { id: 57, name: 'Guanghua Building', latitude: 31.300174, longitude: 121.505253,
+          description: '光华楼' }, 
       ]
     }  
   },

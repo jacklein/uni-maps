@@ -68,7 +68,7 @@ class MapScreen extends Component {
           style={{ flex: 1 }}
           region={this.state.region || this.props.navigation.state.params.initialRegion}
           onRegionChangeComplete={this.renderCallout}
-          provider="google"
+          //provider="google"
           showsUserLocation={true}
         >
           {this.props.navigation.state.params.places.map(place => (

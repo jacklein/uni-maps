@@ -17,8 +17,8 @@ class FavoriteButton extends Component {
     return ( 
       <Icon 
         name={this.props.favorites.has(this.props.item.id) ? 'star' : 'star-o'}
-        type='font-awesome' 
         onPress={() => this.onPress(this.props.item)}
+        type='font-awesome' 
         color='#CEB733'
         containerStyle={{ paddingRight: 5 }}
       />

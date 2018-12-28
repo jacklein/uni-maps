@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Platform, View, Text } from 'react-native';
+import { Platform, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import ItemList from '../components/ItemList';
 
@@ -41,9 +41,7 @@ class FavoritesScreen extends Component {
   render() {
     if (this.props.favorites.size === 0) {
       return (
-        <View>
-          <Text>No Favorites Yet</Text>
-        </View>
+        <Text style={styles.text}>No Favorites Yet</Text>
       )
     }
 
@@ -55,6 +53,14 @@ class FavoritesScreen extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  text: {
+    textAlign: 'center',
+    paddingTop: 40,
+    fontSize: 18
+  }
+});
 
 function mapStateToProps({ favorites }) {
   return { favorites };
