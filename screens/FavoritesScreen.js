@@ -29,8 +29,17 @@ class FavoritesScreen extends Component {
     })
   }
 
+  loadFavorites = () => {
+    const favorites = [];
+    for (const [key, value] of this.props.favorites) {
+      favorites.unshift(value);
+    }
+
+    return favorites;
+  }
+
   render() {
-    if (_.isEmpty(this.props.favorites)) {
+    if (this.props.favorites.size === 0) {
       return (
         <View>
           <Text>No Favorites Yet</Text>
@@ -41,7 +50,7 @@ class FavoritesScreen extends Component {
     return (
       <ItemList
         onItemPress={this.onItemPress}
-        places={Object.values(this.props.favorites)}
+        places={this.loadFavorites()}
       />
     )
   }

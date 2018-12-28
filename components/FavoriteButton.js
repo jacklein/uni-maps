@@ -6,7 +6,7 @@ import { Icon } from 'react-native-elements';
 class FavoriteButton extends Component {
 
   onPress = async item => {
-    if (!this.props.favorites[item.id]) {
+    if (!this.props.favorites.has(item.id)) {
       await this.props.addFavorite(item);
     } else {
       await this.props.removeFavorite(item);
@@ -16,9 +16,11 @@ class FavoriteButton extends Component {
   render() {
     return ( 
       <Icon 
-        name={this.props.favorites[this.props.item.id] ? 'star' : 'star-o'}
+        name={this.props.favorites.has(this.props.item.id) ? 'star' : 'star-o'}
         type='font-awesome' 
         onPress={() => this.onPress(this.props.item)}
+        color='#CEB733'
+        containerStyle={{ paddingRight: 5 }}
       />
     )
   }
