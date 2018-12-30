@@ -4,8 +4,9 @@ import { StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
-import store from './store';
+import { store, persistor } from './store';
 import WelcomeScreen from './screens/WelcomeScreen';
 import HomeScreen from './screens/HomeScreen';
 import CategoryScreen from './screens/CategoryScreen';
@@ -85,7 +86,9 @@ export default class App extends React.Component {
     return (
       this.state.fontLoaded ? (
         <Provider store={store}>
-          <AppContainer />
+          <PersistGate loading={<AppLoading />} persistor={persistor}>
+            <AppContainer />
+          </PersistGate>
         </Provider>
       ) : <AppLoading />
     )
