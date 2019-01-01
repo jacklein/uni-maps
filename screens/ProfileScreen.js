@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, Platform } from 'react-native';
-import { Button, Card } from 'react-native-elements';
+import { View, Text, Platform, FlatList } from 'react-native';
+import { Button, Card, List, ListItem, CheckBox } from 'react-native-elements';
 import { connect } from 'react-redux';
+
+const list = [
+  {
+    name: 'Amy Farha',
+  },
+  {
+    name: 'Chris Jackson',
+  }
+]
 
 class ProfileScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -24,13 +33,44 @@ class ProfileScreen extends Component {
     }
   }
 
+  state = { checked: null };
+
+  renderRow = ({ item, index }) => {
+    return (
+      <ListItem
+        hideChevron
+        onPress={() => this.setState({ checked: index })}
+        title={
+          <CheckBox 
+            title={item.name}
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            onPress={() => this.setState({ checked: index })}
+            checked={this.state.checked === index}
+            checkedColor='pink'
+            containerStyle={{ backgroundColor: 'white', borderWidth: 0, padding: 0 }}
+          />
+        }
+      />
+    )
+  }
+
   render() {
     return (
-      <View>
+      /*<View>
         <Card title="Your University">
           <Text style={styles.text}>{this.props.schoolInfo.name}</Text>
         </Card>
-      </View>
+      </View>*/
+      <List>
+        <FlatList
+          data={list}
+          extraData={this.state.checked}
+          renderItem={this.renderRow}
+          keyExtractor={item => item.name}
+        />
+      </List>
+
     )
   }
 }

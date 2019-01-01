@@ -9,14 +9,16 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^31.0.2",
+    "expo": "^31.0.6",
     "immutability-helper": "^2.9.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-elements": "^0.19.1",
-    "react-native-picker-select": "^5.2.0",
+    "react-native-material-dropdown": "^0.11.1",
+    "react-native-modal": "^7.0.2",
+    "react-native-popup-menu": "^0.14.2",
     "react-navigation": "^3.0.9",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",

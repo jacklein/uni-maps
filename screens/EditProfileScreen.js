@@ -4,7 +4,7 @@ import { StackActions, NavigationActions } from 'react-navigation';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import SchoolPicker from '../components/SchoolPicker';
+//import SchoolPicker from '../components/SchoolPicker';
 
 class EditProfileScreen extends Component {
   static navigationOptions = ({ navigation }) => {

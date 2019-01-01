@@ -35,9 +35,9 @@ class WelcomeScreen extends Component {
     this.setState({ school: school || false });
   }
 
-  onSlidesComplete = async () => {
-    await AsyncStorage.setItem('school', this.state.school);
-    this.advanceToHome(this.state.school);
+  onSlidesComplete = async value => {
+    await AsyncStorage.setItem('school', value);
+    this.advanceToHome(value);
   }
 
   render() {
@@ -48,9 +48,7 @@ class WelcomeScreen extends Component {
     return (
       <Slides 
         data={SLIDE_DATA}
-        pickerValue={this.state.school} 
-        onChange={this.onChange}
-        onSelectComplete={this.onSlidesComplete} />
+        onSelectComplete={(value) => this.onSlidesComplete(value)} />
     )
   }
 }

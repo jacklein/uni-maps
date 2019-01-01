@@ -58,7 +58,7 @@ const AppNavigator = createSwitchNavigator({
     {
       homeStack: HomeStack,
       favorites: FavoritesStack,
-      profileStack: ProfileStack
+      //profileStack: ProfileStack
     },
     {
       tabBarOptions: {

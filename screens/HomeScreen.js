@@ -2,8 +2,9 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Platform, ScrollView, StyleSheet } from 'react-native';
-import { List, ListItem } from 'react-native-elements';
+import { List, ListItem, Icon } from 'react-native-elements';
 import ViewAll from '../components/ViewAll';
+import SchoolSelectModal from '../components/modals/SchoolSelectModal';
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -11,7 +12,10 @@ class HomeScreen extends Component {
       headerTitle: navigation.state.params ? navigation.state.params.title : '',
       headerStyle: {
         marginTop: Platform.OS === 'android' ? 24 : 0
-      }
+      },
+      /*headerRight: (
+        <HomeMenu />
+      )*/
     }
   }
 
@@ -61,6 +65,14 @@ class HomeScreen extends Component {
     })
   }
 
+  closeMenu() {
+    this.menu.close();
+  }
+
+  onRef = r => {
+    this.menu = r;
+  }
+
   render() {
     return (
       <ScrollView>
@@ -74,6 +86,9 @@ class HomeScreen extends Component {
 
           {this.renderCategories()}
         </List>
+        <SchoolSelectModal 
+          schoolValue={this.props.schoolID}
+        />
       </ScrollView>
     )
   }
