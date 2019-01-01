@@ -1,10 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { openModal } from '../actions';
+import { SCHOOL_SELECT, INFO } from '../components/modals/constants';
 import { Platform, ScrollView, StyleSheet } from 'react-native';
-import { List, ListItem, Icon } from 'react-native-elements';
+import { List, ListItem, Button } from 'react-native-elements';
 import ViewAll from '../components/ViewAll';
-import SchoolSelectModal from '../components/modals/SchoolSelectModal';
+import ModalConductor from '../components/modals/ModalConductor';
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -86,9 +88,15 @@ class HomeScreen extends Component {
 
           {this.renderCategories()}
         </List>
-        <SchoolSelectModal 
-          schoolValue={this.props.schoolID}
+        <Button
+          title="open school select modal"
+          onPress={() => this.props.openModal(SCHOOL_SELECT)}
         />
+        <Button
+          title="open info modal"
+          onPress={() => this.props.openModal(INFO)}
+        />
+        <ModalConductor />
       </ScrollView>
     )
   }
@@ -112,4 +120,4 @@ function mapStateToProps({ data }) {
   return { schoolInfo: data.schoolInfo };
 }
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps, { openModal })(HomeScreen);

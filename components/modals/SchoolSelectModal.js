@@ -12,10 +12,6 @@ import SchoolSelect from '../SchoolSelect';
 import { AsyncStorage } from 'react-native';
 
 class SchoolSelectModal extends Component {
-  state = {
-    visibleModal: null
-  };
-  
   renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
@@ -27,7 +23,7 @@ class SchoolSelectModal extends Component {
   onSelectComplete = async value => {
     await AsyncStorage.setItem('school', value);
     this.props.setData(value, () => {
-      this.setState({ visibleModal: null });
+      this.props.closeModal();
     });
   }
 
@@ -44,17 +40,12 @@ class SchoolSelectModal extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.renderButton("School Select Modal", () =>
-          this.setState({ visibleModal: true })
-        )}
-        <Modal
-          isVisible={this.state.visibleModal === true}
-          onBackdropPress={() => this.setState({ visibleModal: null })}
-        >
-          {this.renderModalContent()}
-        </Modal>
-      </View>
+      <Modal
+        isVisible={this.props.modal === 'school_select'}
+        onBackdropPress={() => this.props.closeModal()}
+      >
+        {this.renderModalContent()}
+      </Modal>
     );
   }
 }
@@ -82,8 +73,8 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps({ data }) {
-  return { schoolId: data.schoolId };
+function mapStateToProps({ data, modal }) {
+  return { schoolId: data.schoolId, modal };
 }
 
 export default connect(mapStateToProps, actions)(SchoolSelectModal);

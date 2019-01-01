@@ -8,10 +8,6 @@ import {
 import Modal from "react-native-modal";
 
 class InfoModal extends Component {
-  state = {
-    visibleModal: null
-  };
-  
   renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
@@ -20,36 +16,28 @@ class InfoModal extends Component {
     </TouchableOpacity>
   );
 
-  onSelectComplete = value => {
-    this.props.setData(value, () => {
-      this.setState({ visibleModal: null });
-    });
-  }
-
   renderModalContent = () => (
     <View style={styles.modalContent}>
-      <Text style={{ fontSize: 16, textAlign: 'center' }}>Edit University</Text>
-      <SchoolSelect
-        value={this.props.schoolId}
-        onSelectComplete={value => this.onSelectComplete(value)}
-        buttonStyle={{ backgroundColor: '#0288D1', marginTop: 24 }}
-      />
+      <Text>
+      A whole bunch of text. A whole bunch of text. A whole bunch of text. 
+      A whole bunch of text. A whole bunch of text. A whole bunch of text. 
+      A whole bunch of text. A whole bunch of text. A whole bunch of text. 
+      A whole bunch of text. A whole bunch of text. A whole bunch of text.  
+      </Text>
+      {this.renderButton('Close', () => {
+        this.props.closeModal();
+      })}
     </View>
   );
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.renderButton("School Select Modal", () =>
-          this.setState({ visibleModal: true })
-        )}
-        <Modal
-          isVisible={this.state.visibleModal === true}
-          onBackdropPress={() => this.setState({ visibleModal: null })}
-        >
-          {this.renderModalContent()}
-        </Modal>
-      </View>
+      <Modal
+        isVisible={true}
+        onBackdropPress={() => this.props.closeModal()}
+      >
+        {this.renderModalContent()}
+      </Modal>
     );
   }
 }
@@ -64,6 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: "lightblue",
     padding: 12,
     margin: 16,
+    marginBottom: 0,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 4,
