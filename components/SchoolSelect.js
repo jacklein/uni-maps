@@ -32,6 +32,7 @@ const SchoolSelect = props => {
         value={props.value}
         dropdownPosition={0}
         containerStyle={props.containerStyle}
+        baseColor='rgba(0, 0, 0, .87)'
       />
       <Button
         title={props.buttonText}

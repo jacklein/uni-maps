@@ -7,7 +7,8 @@ import { AppLoading } from 'expo';
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
-  { text: 'Uni Maps', color: '#03A9F4', fontSize: 56 },
+  { text: 'Uni Maps', subtext: 'Helping you navigate your campus, because we know how hard it can be.',
+    color: '#0288D1', fontSize: 56 },
   { text: 'Select Your School', color: '#009688', fontSize: 30 }
 ];
 
@@ -48,7 +49,8 @@ class WelcomeScreen extends Component {
     return (
       <Slides 
         data={SLIDE_DATA}
-        onSelectComplete={(value) => this.onSlidesComplete(value)} />
+        onSelectComplete={(value) => this.onSlidesComplete(value)} 
+      />
     )
   }
 }

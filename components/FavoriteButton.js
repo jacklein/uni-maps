@@ -19,7 +19,7 @@ class FavoriteButton extends Component {
         name={this.props.favorites.has(this.props.item.id) ? 'star' : 'star-o'}
         onPress={() => this.onPress(this.props.item)}
         type='font-awesome' 
-        color='#CEB733'
+        color={this.props.favorites.has(this.props.item.id) ? '#CEB733' : 'lightgray'}
         containerStyle={{ paddingRight: 5 }}
       />
     )
