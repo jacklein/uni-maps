@@ -1,11 +1,12 @@
 import React from 'react';
- 
 import { SCHOOL_SELECT, INFO } from './modals/constants';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../actions'; 
-import { View, Text } from 'react-native';
-import { Icon, Button } from 'react-native-elements'
+import { View } from 'react-native';
+import { Icon } from 'react-native-elements'
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
+import InfoModal from './modals/InfoModal';
+import SchoolSelectModal from './modals/SchoolSelectModal';
  
 class HomeMenu extends React.Component {
   _menu = null;
@@ -54,8 +55,12 @@ class HomeMenu extends React.Component {
           style={{ marginTop: 25 }}
         >
           <MenuItem onPress={() => this.prepareModal(SCHOOL_SELECT)}>Change School</MenuItem>
+          <MenuDivider />
           <MenuItem onPress={() => this.prepareModal(INFO)}>Info</MenuItem>
         </Menu>
+
+        <InfoModal />
+        <SchoolSelectModal />
       </View>
     );
   }

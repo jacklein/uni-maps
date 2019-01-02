@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "uni-maps",
-    "description": "uni maps",
+    "name": "Uni Maps",
+    "description": "Uni Maps",
     "slug": "uni-maps",
     "privacy": "public",
     "sdkVersion": "31.0.0",
@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jacklein.unimaps"
+    },
+    "android": {
+      "package": "com.jacklein.unimaps"
     },
     "githubUrl": "https://github.com/jacklein/uni-maps"
   }

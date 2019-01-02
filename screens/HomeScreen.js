@@ -5,8 +5,6 @@ import { closeModal, openModal } from '../actions';
 import { Platform, ScrollView, StyleSheet } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import ViewAll from '../components/ViewAll';
-import InfoModal from '../components/modals/InfoModal';
-import SchoolSelectModal from '../components/modals/SchoolSelectModal';
 import HomeMenu from '../components/HomeMenu';
 
 class HomeScreen extends Component {
@@ -81,9 +79,6 @@ class HomeScreen extends Component {
 
           {this.renderCategories()}
         </List>
-
-        <InfoModal />
-        <SchoolSelectModal />
       </ScrollView>
     )
   }
