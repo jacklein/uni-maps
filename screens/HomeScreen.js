@@ -1,10 +1,13 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { closeModal, openModal } from '../actions';
 import { Platform, ScrollView, StyleSheet } from 'react-native';
-import { List, ListItem, Icon } from 'react-native-elements';
+import { List, ListItem } from 'react-native-elements';
 import ViewAll from '../components/ViewAll';
+import InfoModal from '../components/modals/InfoModal';
 import SchoolSelectModal from '../components/modals/SchoolSelectModal';
+import HomeMenu from '../components/HomeMenu';
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -13,9 +16,9 @@ class HomeScreen extends Component {
       headerStyle: {
         marginTop: Platform.OS === 'android' ? 24 : 0
       },
-      /*headerRight: (
+      headerRight: (
         <HomeMenu />
-      )*/
+      )
     }
   }
 
@@ -65,14 +68,6 @@ class HomeScreen extends Component {
     })
   }
 
-  closeMenu() {
-    this.menu.close();
-  }
-
-  onRef = r => {
-    this.menu = r;
-  }
-
   render() {
     return (
       <ScrollView>
@@ -86,9 +81,9 @@ class HomeScreen extends Component {
 
           {this.renderCategories()}
         </List>
-        <SchoolSelectModal 
-          schoolValue={this.props.schoolID}
-        />
+
+        <InfoModal />
+        <SchoolSelectModal />
       </ScrollView>
     )
   }
@@ -99,17 +94,14 @@ var styles = StyleSheet.create({
     marginTop: 0,
     borderTopWidth: 0
   },
-  text: {
-    fontFamily: 'karla-regular'
-  },
   separator: {
     borderBottomColor: '#bbb',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
 
-function mapStateToProps({ data }) {
-  return { schoolInfo: data.schoolInfo };
+function mapStateToProps({ data, modal }) {
+  return { schoolInfo: data.schoolInfo, modal };
 }
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps, { closeModal, openModal })(HomeScreen);
