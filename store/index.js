@@ -15,6 +15,7 @@ const mapTransformer = config =>
 const persistConfig = {
   key: 'root',
   storage: storage,
+  whitelist: ['favorites'],
   transforms: [mapTransformer({ whitelist: 'favorites' })],
 };
 

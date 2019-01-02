@@ -2,20 +2,15 @@ import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from "react-native";
+import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { closeModal, openModal } from '../../actions';
+import { INFO } from './constants';
 import Modal from "react-native-modal";
 
 class InfoModal extends Component {
-  renderButton = (text, onPress) => (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.button}>
-        <Text>{text}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-
   renderModalContent = () => (
     <View style={styles.modalContent}>
       <Text>
@@ -24,16 +19,18 @@ class InfoModal extends Component {
       A whole bunch of text. A whole bunch of text. A whole bunch of text. 
       A whole bunch of text. A whole bunch of text. A whole bunch of text.  
       </Text>
-      {this.renderButton('Close', () => {
-        this.props.closeModal();
-      })}
+      <Button
+        title="Close"
+        onPress={() => this.props.closeModal()}
+        buttonStyle={{ backgroundColor: '#0288D1', marginTop: 24 }}
+      />
     </View>
   );
 
   render() {
     return (
       <Modal
-        isVisible={true}
+        isVisible={this.props.modal === INFO}
         onBackdropPress={() => this.props.closeModal()}
       >
         {this.renderModalContent()}
@@ -43,21 +40,6 @@ class InfoModal extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  button: {
-    backgroundColor: "lightblue",
-    padding: 12,
-    margin: 16,
-    marginBottom: 0,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 4,
-    borderColor: "rgba(0, 0, 0, 0.1)"
-  },
   modalContent: {
     backgroundColor: "white",
     padding: 22,
@@ -66,4 +48,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InfoModal;
+function mapStateToProps({ modal }) {
+  return { modal };
+}
+
+export default connect(mapStateToProps, { closeModal, openModal })(InfoModal);

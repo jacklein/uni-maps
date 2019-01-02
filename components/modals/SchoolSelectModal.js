@@ -5,11 +5,12 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import { AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import { closeModal, openModal, setData } from '../../actions';
+import { SCHOOL_SELECT } from './constants';
 import Modal from "react-native-modal";
 import SchoolSelect from '../SchoolSelect';
-import { AsyncStorage } from 'react-native';
 
 class SchoolSelectModal extends Component {
   renderButton = (text, onPress) => (
@@ -41,7 +42,7 @@ class SchoolSelectModal extends Component {
   render() {
     return (
       <Modal
-        isVisible={this.props.modal === 'school_select'}
+        isVisible={this.props.modal === SCHOOL_SELECT}
         onBackdropPress={() => this.props.closeModal()}
       >
         {this.renderModalContent()}
@@ -51,20 +52,6 @@ class SchoolSelectModal extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  button: {
-    backgroundColor: "lightblue",
-    padding: 12,
-    margin: 16,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 4,
-    borderColor: "rgba(0, 0, 0, 0.1)"
-  },
   modalContent: {
     backgroundColor: "white",
     padding: 22,
@@ -77,4 +64,4 @@ function mapStateToProps({ data, modal }) {
   return { schoolId: data.schoolId, modal };
 }
 
-export default connect(mapStateToProps, actions)(SchoolSelectModal);
+export default connect(mapStateToProps, { closeModal, openModal, setData })(SchoolSelectModal);
