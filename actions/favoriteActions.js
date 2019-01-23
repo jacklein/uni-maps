@@ -3,8 +3,8 @@ import {
   REMOVE_FAVORITE
 } from './types';
 
-export const addFavorite = item => async dispatch => {
-  dispatch({ type: ADD_FAVORITE, payload: item });
+export const addFavorite = itemID => async dispatch => {
+  dispatch({ type: ADD_FAVORITE, payload: itemID });
 };
 
 export const removeFavorite = itemID => async dispatch => {

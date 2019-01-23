@@ -7,9 +7,9 @@ import update from 'immutability-helper';
 export default function(state = new Map(), action) {
   switch(action.type) {
     case ADD_FAVORITE:
-      return update(state, {$add: [[action.payload.id, action.payload]]});
+      return update(state, {$add: [[action.payload, true]]});
     case REMOVE_FAVORITE:
-      return update(state, {$remove: [action.payload.id]});
+      return update(state, {$remove: [action.payload]});
     default:
       return state;
   }
