@@ -7,9 +7,9 @@ class FavoriteButton extends Component {
 
   onPress = async item => {
     if (!this.props.favorites.has(item.id)) {
-      await this.props.addFavorite(item);
+      await this.props.addFavorite(item.id);
     } else {
-      await this.props.removeFavorite(item);
+      await this.props.removeFavorite(item.id);
     }
   }
 

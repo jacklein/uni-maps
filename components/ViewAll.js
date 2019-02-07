@@ -4,12 +4,8 @@ import { ListItem } from 'react-native-elements';
 
 const ViewAll = props => {
   const renderAllPlaces = () => {
-    let all = [];
-    _.map(props.data.categories, category => {
-      all.push(...category.places);
-    })
-   
-    return all.sort((a,b) => a.name.localeCompare(b.name));
+    let places = props.data.places.slice();
+    return places.sort((a,b) => a.name.localeCompare(b.name));
   }
 
   return(

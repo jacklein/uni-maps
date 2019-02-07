@@ -47,8 +47,8 @@ class HomeScreen extends Component {
   onCategoryPress = category => {
     this.props.navigation.navigate({
       routeName: 'category',
-      params: { title: category.longName, 
-                places: category.places, 
+      params: { title: category.name, 
+                places: this.props.schoolInfo.places.slice(category.start, category.end), 
                 initialRegion: this.props.schoolInfo.initialRegion } 
     })
   }
@@ -57,8 +57,8 @@ class HomeScreen extends Component {
     return _.map(this.props.schoolInfo.categories, category => {
       return (
         <ListItem
-          title={category.longName}
-          key={category.longName}
+          title={category.name}
+          key={category.name}
           onPress={() => this.onCategoryPress(category)}
           containerStyle={styles.separator}
         />

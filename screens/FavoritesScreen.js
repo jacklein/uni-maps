@@ -32,24 +32,27 @@ class FavoritesScreen extends Component {
   loadFavorites = () => {
     const favorites = [];
     for (const [key, value] of this.props.favorites) {
-      favorites.unshift(value);
-    }
+      const favorite = this.props.schoolInfo.places.find(place => place.id === key);
+      if (favorite) { favorites.unshift(favorite); }
+    };
 
-    return favorites;
+    if (favorites.length === 0) {
+      return (
+        <Text style={styles.text}>No Favorites Yet</Text>
+      );
+    } else {
+      return (
+        <ItemList
+          onItemPress={this.onItemPress}
+          places={favorites}
+        />
+      );
+    }
   }
 
   render() {
-    if (this.props.favorites.size === 0) {
-      return (
-        <Text style={styles.text}>No Favorites Yet</Text>
-      )
-    }
-
     return (
-      <ItemList
-        onItemPress={this.onItemPress}
-        places={this.loadFavorites()}
-      />
+      this.loadFavorites()
     )
   }
 }
@@ -62,8 +65,8 @@ const styles = StyleSheet.create({
   }
 });
 
-function mapStateToProps({ favorites }) {
-  return { favorites };
+function mapStateToProps({ favorites, data }) {
+  return { favorites, schoolInfo: data.schoolInfo };
 }
 
 export default connect(mapStateToProps)(FavoritesScreen);
