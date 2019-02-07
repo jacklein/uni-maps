@@ -75,7 +75,7 @@ const styles = {
     justifyContent: 'center',
   },
   text: {
-    fontFamily: 'karla-bold',
+    //fontFamily: 'karla-bold',
     color: 'white',
     textAlign: 'center'
   },
